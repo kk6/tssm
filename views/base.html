@@ -2,10 +2,36 @@
 <html lang="en">
 <head>
   <title>{% block title %}{% endblock %} - TSSM</title>
-  {% block css %}{% endblock %}
+  {% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Vampiro+One">
+    <link rel="stylesheet" href="/static/css/style.css">
+  {% endblock %}
   {% block js %}{% endblock %}
 </head>
 <body>
-  {% block content %}{% endblock %}
+  <main class="wrapper">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <a class="nav-item is-brand" href="/">
+            <h1 class="title">TSSM</h1>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="main-contents container">
+    {% block content %}{% endblock %}
+    </section>
+
+    <footer class="footer">
+      <section class="container">
+        <strong>TSSM</strong> by <a href="http://twitter.com/kk6">kk6</a>.
+      </section>
+    </footer>
+  </main>
 </body>
 </html>
