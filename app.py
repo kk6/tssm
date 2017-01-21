@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import os
 import urllib.parse
 from functools import wraps
@@ -10,6 +11,7 @@ from bottle import (
     jinja2_template as template,
     redirect,
     request,
+    response,
     static_file,
     BaseTemplate,
 )
@@ -150,6 +152,20 @@ def home():
     twitter = request.environ.get('twitter')
     user = twitter.api.me()
     return template('home', user=user)
+
+
+@route('/api/saved_searches/list')
+@login_required
+def get_saved_searches():
+    twitter = request.environ.get('twitter')
+    saved_searches = twitter.api.saved_searches()
+    data = []
+    for s in saved_searches:
+        timestamp = s.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        data.append({'id': s.id, 'name': s.name, 'query': s.query, 'timestamp': timestamp})
+
+    response.headers['Content-Type'] = 'application/json'
+    return json.dumps(data)
 
 
 if __name__ == "__main__":

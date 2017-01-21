@@ -2,6 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
   <section class="container section">
-  Hello {{ user.name }}!
+  <p>{{ user.name }}'s saved searches are:</p>
+  {% include 'components/saved_search.html' %}
   </section>
 {% endblock %}

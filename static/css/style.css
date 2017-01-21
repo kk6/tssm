@@ -17,3 +17,9 @@
 .footer {
   margin-top: 2rem;
 }
+a {
+  color: dodgerblue;
+}
+a:hover {
+  text-decoration: underline;
+}
